@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
 import React from 'react'
 import 'bulma/css/bulma.css'
 import logo from '../images/handiwork-logo.jpeg'
@@ -11,10 +12,11 @@ const Header = ({ siteTitle }) => (
   >
     <div className="container">
       <div className="navbar-brand">
-        <a className="navbar-item" href="https://bulma.io">
-          <img src={logo}  />
+        <a className="navbar-item">
+          <Link to="/">
+            <img src={logo} />
+          </Link>
         </a>
-
         <a
           role="button"
           className="navbar-burger burger"
@@ -29,12 +31,44 @@ const Header = ({ siteTitle }) => (
       </div>
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-end">
-        <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link is-size-7">SHOP</a>
+          <div className="navbar-item has-dropdown is-hoverable">
+            <Link
+                to="/productcategory"
+                className="navbar-link is-size-7"
+                state={{
+                  category: 'artPrints',
+                }}
+              >
+                SHOP
+              </Link>
             <div className="navbar-dropdown">
-              <a className="navbar-item is-size-7" >ART PRINTS</a>
-              <a className="navbar-item is-size-7">NOTEBOOKS</a>
-              <a className="navbar-item is-size-7">PHONE CASES</a>
+              <Link
+                to="/productcategory"
+                className="navbar-item is-size-7"
+                state={{
+                  category: 'artPrints',
+                }}
+              >
+                ART PRINTS
+              </Link>
+              <Link
+                to="/productcategory"
+                className="navbar-item is-size-7"
+                state={{
+                  category: 'notebooks',
+                }}
+              >
+                NOTEBOOKS
+              </Link>
+              <Link
+                to="/productcategory"
+                className="navbar-item is-size-7"
+                state={{
+                  category: 'phoneCases',
+                }}
+              >
+                PHONE CASES
+              </Link>
             </div>
           </div>
           <a className="navbar-item is-size-7">CONTACT</a>

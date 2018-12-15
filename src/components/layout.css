@@ -3,3 +3,10 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+
+.homepagelabel {
+  color: black;
+  padding-left: 15px;
+  padding-top: 15px;
+}
+

@@ -2,11 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-
 import Header from './header'
 import './layout.css'
-
-import "../styles/index.scss"
+import '../styles/index.scss'
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -49,13 +47,18 @@ const Layout = ({ children }) => (
                 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js',
             },
           ]}
+          link={[
+            {
+              href: 'https://fonts.googleapis.com/css?family=Montserrat',
+              rel: 'stylesheet',
+              type: 'text/css',
+            },
+          ]}
         >
           <html lang="en" />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div className="container">
-          {children}
-        </div>
+        <div className="container">{children}</div>
       </>
     )}
   />

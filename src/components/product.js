@@ -1,22 +1,24 @@
 import React from 'react'
+import { Link } from 'gatsby'
+import Img from 'gatsby-image'
 
 const Product = props => (
   <div className="tile is-parent">
-    <article className="tile is-child">
-      <img src={props.src} />
-      <p className="is-size-7 has-text-grey has-text-centered">{props.label}</p>
-      <button
-        className="snipcart-add-item"
-        data-item-id="2"
-        data-item-name="Bacon"
-        data-item-price="3.00"
-        data-item-weight="20"
-        data-item-url="http://myapp.com/products/bacon"
-        data-item-description="Some fresh bacon"
-      >
-        Buy bacon
-      </button>
-    </article>
+    <Link
+      to={`/${
+        props.productData.category
+      }/${props.productData.label.toLowerCase()}`}
+      state={{
+        productData: props.productData,
+      }}
+    >
+      <article className="tile is-child">
+        <Img fixed={props.productData.image.childImageSharp.fixed} />
+        <p className="is-size-7 has-text-grey has-text-centered">
+          {props.productData.label}
+        </p>
+      </article>
+    </Link>
   </div>
 )
 
