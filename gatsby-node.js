@@ -17,10 +17,11 @@ exports.createPages = ({ graphql, actions }) => {
                 category
                 image {
                   childImageSharp {
-                    fixed(width: 200, height: 200) {
+                    fluid(maxWidth: 380)  {
                       src
-                      width
-                      height
+                      srcSet
+                      aspectRatio
+                      sizes
                     }
                   }
                 }
@@ -35,10 +36,11 @@ exports.createPages = ({ graphql, actions }) => {
               id
               image {
                 childImageSharp {
-                  fixed(width: 300, height: 450) {
+                  fluid(maxWidth: 380)  {
                     src
-                    width
-                    height
+                    srcSet
+                    aspectRatio
+                    sizes
                   }
                 }
               }
@@ -58,7 +60,7 @@ exports.createPages = ({ graphql, actions }) => {
       })
       result.data.allProductsJson.edges.forEach(({ node }) => {
         createPage({
-          path: `${node.category}/${node.label}`,
+          path: `${node.category.toLowerCase()}/${node.label.toLowerCase()}`,
           component: path.resolve(`./src/templates/product.js`),
           context: {
             // Data passed to context is available
@@ -66,7 +68,7 @@ exports.createPages = ({ graphql, actions }) => {
             label: node.label,
             id: node.id,
             price: node.price,
-            image: node.image.childImageSharp.fixed
+            image: node.image.childImageSharp.fluid
           },
         })
       })

@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import Header from './header'
 import './layout.css'
 import '../styles/index.scss'
+import { Link } from 'gatsby'
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -59,6 +60,13 @@ const Layout = ({ children }) => (
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
         <div className="container">{children}</div>
+        <footer className="footer">
+          <div className="content has-text-centered">
+            <p>
+              <Link to="shipping"><p className="is-size-7 has-text-grey-dark">SHIPPING + RETURNS</p></Link>
+            </p>
+          </div>
+        </footer>
       </>
     )}
   />
