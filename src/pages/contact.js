@@ -1,8 +1,10 @@
 import React from 'react'
-import Layout from '../components/layout';
+import Info from '../components/info'
 
 export default () => (
-    <Layout>
-    <p1>Contact</p1>
-    </Layout>
+  <Info
+    title="HELLO"
+    content="For more information or to request bespoke prints please contact
+    faye@handiwork.store"
+  />
 )

@@ -30,7 +30,7 @@ export default ({ pageContext: { label, price, id, image } }) => (
           </div>
         </article>
       </div>
-      <div className="tile is-parent">
+      <div className="tile is-parent is-7">
         <article className="tile is-child">
           <Img fluid={image} />
         </article>

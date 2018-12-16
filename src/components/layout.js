@@ -59,9 +59,9 @@ const Layout = ({ children }) => (
           <html lang="en" />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div className="container">{children}</div>
+        <div className="container" style={{'padding-top': '50px'}}>{children}</div>
         <footer className="footer">
-          <div className="content has-text-centered">
+          <div className="content has-text-centered" style={{'padding-top': '50px;'}}>
             <p>
               <Link to="shipping"><p className="is-size-7 has-text-grey-dark">SHIPPING + RETURNS</p></Link>
             </p>

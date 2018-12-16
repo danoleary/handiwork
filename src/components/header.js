@@ -29,7 +29,7 @@ export default () => (
       >
         <div className="container">
           <div className="navbar-brand">
-            <Link to="/" className="navbar-item header-logo">
+            <Link to="/" className="navbar-item header-logo" style={{'padding-left': '50px'}}>
               <Img fixed={data.file.childImageSharp.fixed} />
             </Link>
             <a
@@ -45,7 +45,7 @@ export default () => (
             </a>
           </div>
           <div id="navbarBasicExample" className="navbar-menu">
-            <div className="navbar-end">
+            <div className="navbar-end" style={{'padding-right': '50px'}}>
               <div className="navbar-item has-dropdown is-hoverable">
                 <HeaderLink category="artprints" label="SHOP" />
                 <div className="navbar-dropdown">
