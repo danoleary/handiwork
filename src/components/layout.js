@@ -26,34 +26,29 @@ const Layout = ({ children }) => (
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },
           ]}
+          script={[
+            {
+              type: 'text/javascript',
+              src: "https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"
+            },
+            {
+              type: 'text/javascript',
+              src: "https://cdn.snipcart.com/scripts/2.0/snipcart.js",
+              id: "snipcart",
+              'data-api-key': `${process.env.SNIPCART_KEY}`
+            }
+          ]}
           link={[
             {
               href: 'https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css',
               rel: 'stylesheet',
               type: 'text/css',
             },
-          ]}
-          script={[
-            {
-              type: 'text/javascript',
-              url: '',
-              id: 'snipcart',
-              'data-api-key':
-                'YjFmMjliNWUtMmVmMi00MzFhLTk3NDAtYTEwZTAwYzc4ZmNhNjM2Nzk0NzQwNTQwOTEzODgw',
-              src: 'https://cdn.snipcart.com/scripts/2.0/snipcart.js',
-            },
-            {
-              type: 'text/javascript',
-              src:
-                'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js',
-            },
-          ]}
-          link={[
             {
               href: 'https://fonts.googleapis.com/css?family=Montserrat',
               rel: 'stylesheet',
               type: 'text/css',
-            },
+            }
           ]}
         >
           <html lang="en" />

@@ -23,7 +23,7 @@ function buildImage(data, category, title) {
 export default ({ data }) => (
   <Layout>
     <div className="tile is-ancestor">
-      <div className="tile is-parent is-8">
+      <div className="tile is-parent is-7">
         {buildImage(data, 'artprints', 'ART PRINTS')}
       </div>
       <div className="tile is-vertical">

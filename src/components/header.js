@@ -57,7 +57,7 @@ export default () => (
                 </div>
               </div>
               <HeaderLink category="contact" label="CONTACT" />
-              <HeaderLink category="notebooks" label="CART" />
+              <a href="#" className="snipcart-checkout navbar-item is-size-7 has-text-black">CART</a>
             </div>
           </div>
         </div>
