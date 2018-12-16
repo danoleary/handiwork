@@ -2,14 +2,14 @@ import React from 'react'
 import Layout from '../components/layout'
 import Img from 'gatsby-image'
 
-export default ({ pageContext: { label, price, id, image } }) => (
+export default ({ pageContext: { title, price, id, image } }) => (
   <Layout>
     <div className="tile is-ancestor">
       <div className="tile is-parent">
         <article className="tile is-child">
           <div className="content" style={{ 'padding-top': '100px' }}>
             <p className="title has-text-centered is-uppercase has-text-dark-grey">
-              {label}
+              {title}
             </p>
             <p
               className="subtitle has-text-centered is-uppercase has-text-dark-grey"
@@ -24,7 +24,7 @@ export default ({ pageContext: { label, price, id, image } }) => (
               data-item-price={price}
               data-item-weight="20"
               data-item-url="http://myapp.com/products/bacon"
-              data-item-description={label}
+              data-item-description={title}
             ><p className="is-size-7 has-text-black">ADD TO CART</p></button>
             </div>
           </div>

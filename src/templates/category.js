@@ -7,8 +7,8 @@ function buildTile(product) {
   return (
     <div className="tile is-parent is-4" key={product.id}>
       <article className="tile is-child">
-        <Link to={`/${product.category}/${product.label}`}>
-          <Img fluid={product.image.childImageSharp.fluid} />
+        <Link to={`/${product.category}/${product.title}`}>
+          <Img fluid={product.image.fluid} />
           <p
             className="subtitle is-size-7 has-text-centered has-text-grey is-uppercase"
             style={{ paddingTop: '10px' }}

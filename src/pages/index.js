@@ -4,19 +4,17 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 
-function buildImage(images, category, label) {
+function buildImage(data, category, title) {
   return (
     <article className="tile is-child">
       <Link to={`/${category}`}>
-        <figure className="image">
-          <p className="is-overlay is-size-7 has-text-grey">{label}</p>
           <Img
             fluid={
-              images.filter(x => x.node.name === category)[0].node
-                .childImageSharp.fluid
+              data.allContentfulAsset.edges.filter(
+                x => x.node.title === category
+              )[0].node.fluid
             }
           />
-        </figure>
       </Link>
     </article>
   )
@@ -25,14 +23,14 @@ function buildImage(images, category, label) {
 export default ({ data }) => (
   <Layout>
     <div className="tile is-ancestor">
-      <div className="tile is-parent is-7">
-        {buildImage(data.allFile.edges, 'artprints', 'ART PRINTS')}
+      <div className="tile is-parent is-8">
+        {buildImage(data, 'artprints', 'ART PRINTS')}
       </div>
-      <div className="tile is-vertical is-5">
+      <div className="tile is-vertical">
         <div className="tile">
           <div className="tile is-parent is-vertical">
-            {buildImage(data.allFile.edges, 'phonecases', 'PHONE CASES')}
-            {buildImage(data.allFile.edges, 'notebooks', 'NOTEBOOKS')}
+            {buildImage(data, 'phonecases', 'PHONE CASES')}
+            {buildImage(data, 'notebooks', 'NOTEBOOKS')}
           </div>
         </div>
       </div>
@@ -42,17 +40,15 @@ export default ({ data }) => (
 
 export const query = graphql`
   {
-    allFile(filter: { relativeDirectory: { eq: "homepage" } }) {
+    allContentfulAsset(filter: { description: { eq: "homepage" } }) {
       edges {
         node {
-          name
-          childImageSharp {
-            fluid {
-              src
-              srcSet
-              aspectRatio
-              sizes
-            }
+          title
+          fluid {
+            src
+            srcSet
+            aspectRatio
+            sizes
           }
         }
       }

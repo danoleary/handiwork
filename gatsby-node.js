@@ -4,52 +4,47 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return new Promise((resolve, reject) => {
     graphql(`
-      {
-        allProductsJson {
-          group(field: category) {
-            fieldValue
-            totalCount
-            edges {
-              node {
-                label
-                id
-                price
-                category
-                image {
-                  childImageSharp {
-                    fluid(maxWidth: 380)  {
-                      src
-                      srcSet
-                      aspectRatio
-                      sizes
-                    }
-                  }
-                }
+    {
+      allContentfulProduct {
+        edges {
+          node {
+            id
+            title
+            price
+            category
+            image {
+              fluid {
+                src
+                srcSet
+                sizes
+                aspectRatio
               }
             }
           }
+        }
+        group(field: category) {
+          fieldValue
+          totalCount
           edges {
             node {
-              category
-              label
-              price
+              title
               id
+              price
+              category
               image {
-                childImageSharp {
-                  fluid(maxWidth: 380)  {
-                    src
-                    srcSet
-                    aspectRatio
-                    sizes
-                  }
+                fluid {
+                  src
+                  srcSet
+                  aspectRatio
+                  sizes
                 }
               }
             }
           }
         }
       }
-    `).then(result => {
-      result.data.allProductsJson.group.forEach(x => {
+    }`).then(result => {
+      result.data.allContentfulProduct.group.forEach(x => {
         createPage({
             path: `${x.fieldValue}`,
             component: path.resolve(`./src/templates/category.js`),
@@ -58,17 +53,15 @@ exports.createPages = ({ graphql, actions }) => {
             },
           })
       })
-      result.data.allProductsJson.edges.forEach(({ node }) => {
+      result.data.allContentfulProduct.edges.forEach(({ node }) => {
         createPage({
-          path: `${node.category.toLowerCase()}/${node.label.toLowerCase()}`,
+          path: `${node.category.toLowerCase()}/${node.title.toLowerCase()}`,
           component: path.resolve(`./src/templates/product.js`),
           context: {
-            // Data passed to context is available
-            // in page queries as GraphQL variables.
-            label: node.label,
+            title: node.title,
             id: node.id,
             price: node.price,
-            image: node.image.childImageSharp.fluid
+            image: node.image.fluid
           },
         })
       })

@@ -9,14 +9,12 @@ export default () => (
   <StaticQuery
     query={graphql`
       query {
-        file(relativePath: { eq: "handiwork-logo.jpeg" }) {
-          childImageSharp {
-            fixed(width: 150, height: 50) {
-              src
-              width
-              height
-              srcSet
-            }
+        contentfulAsset(title: {eq: "handiwork-logo"}) {
+          fixed(width: 150, height: 50) {
+            src
+            srcSet
+            width
+            height
           }
         }
       }
@@ -29,8 +27,12 @@ export default () => (
       >
         <div className="container">
           <div className="navbar-brand">
-            <Link to="/" className="navbar-item header-logo" style={{'padding-left': '50px'}}>
-              <Img fixed={data.file.childImageSharp.fixed} />
+            <Link
+              to="/"
+              className="navbar-item header-logo"
+              style={{ 'padding-left': '50px' }}
+            >
+              <Img fixed={data.contentfulAsset.fixed} />
             </Link>
             <a
               role="button"
@@ -45,7 +47,7 @@ export default () => (
             </a>
           </div>
           <div id="navbarBasicExample" className="navbar-menu">
-            <div className="navbar-end" style={{'padding-right': '50px'}}>
+            <div className="navbar-end" style={{ 'padding-right': '50px' }}>
               <div className="navbar-item has-dropdown is-hoverable">
                 <HeaderLink category="artprints" label="SHOP" />
                 <div className="navbar-dropdown">
