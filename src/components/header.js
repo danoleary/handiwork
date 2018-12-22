@@ -30,24 +30,35 @@ export default () => (
             <Link
               to="/"
               className="navbar-item header-logo"
-              style={{ 'padding-left': '50px' }}
+              style={{ 'paddingLeft': '50px' }}
             >
               <Img fixed={data.contentfulAsset.fixed} />
             </Link>
-            <a
+            <Link
               role="button"
               className="navbar-burger burger"
               aria-label="menu"
               aria-expanded="false"
               data-target="navbarBasicExample"
+              to="mobilenav"
             >
               <span aria-hidden="true" />
               <span aria-hidden="true" />
               <span aria-hidden="true" />
-            </a>
+            </Link>
+            <Link
+              role="button"
+              className="navbar-burger burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarBasicExample"
+              to="mobilenav"
+            >
+             EXIT
+            </Link>
           </div>
           <div id="navbarBasicExample" className="navbar-menu">
-            <div className="navbar-end" style={{ 'padding-right': '50px' }}>
+            <div className="navbar-end" style={{ 'paddingRight': '50px' }}>
               <div className="navbar-item has-dropdown is-hoverable">
                 <HeaderLink category="artprints" label="SHOP" />
                 <div className="navbar-dropdown">

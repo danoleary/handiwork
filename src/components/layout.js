@@ -29,14 +29,15 @@ const Layout = ({ children }) => (
           script={[
             {
               type: 'text/javascript',
-              src: "https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"
+              src:
+                'https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js',
             },
             {
               type: 'text/javascript',
-              src: "https://cdn.snipcart.com/scripts/2.0/snipcart.js",
-              id: "snipcart",
-              'data-api-key': `${process.env.SNIPCART_KEY}`
-            }
+              src: 'https://cdn.snipcart.com/scripts/2.0/snipcart.js',
+              id: 'snipcart',
+              'data-api-key': `${process.env.SNIPCART_KEY}`,
+            },
           ]}
           link={[
             {
@@ -48,18 +49,23 @@ const Layout = ({ children }) => (
               href: 'https://fonts.googleapis.com/css?family=Montserrat',
               rel: 'stylesheet',
               type: 'text/css',
-            }
+            },
           ]}
         >
           <html lang="en" />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div className="container" style={{'padding-top': '50px'}}>{children}</div>
+        <div className="container" style={{ paddingTop: '50px' }}>
+          {children}
+        </div>
         <footer className="footer">
-          <div className="content has-text-centered" style={{'padding-top': '50px;'}}>
-            <p>
-              <Link to="shipping"><p className="is-size-7 has-text-grey-dark">SHIPPING + RETURNS</p></Link>
-            </p>
+          <div
+            className="content has-text-centered"
+            style={{ paddingTop: '50px' }}
+          >
+            <Link to="shipping">
+              <p className="is-size-7 has-text-grey-dark">SHIPPING + RETURNS</p>
+            </Link>
           </div>
         </footer>
       </>

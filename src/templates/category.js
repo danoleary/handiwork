@@ -24,7 +24,7 @@ export default ({ pageContext: { products } }) => (
   <Layout>
     <div className="tile is-ancestor">
       <div className="tile is-vertical">
-        <div className="tile" style={{ 'flex-wrap': 'wrap' }}>
+        <div className="tile" style={{ 'flexWrap': 'wrap' }}>
           {products.map(x => buildTile(x))}
         </div>
       </div>
