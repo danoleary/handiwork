@@ -5,11 +5,11 @@ import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import HeaderLink from './headerlink'
 
-export default () => (
+export default props => (
   <StaticQuery
     query={graphql`
       query {
-        contentfulAsset(title: {eq: "handiwork-logo"}) {
+        contentfulAsset(title: { eq: "handiwork-logo" }) {
           fixed(width: 150, height: 50) {
             src
             srcSet
@@ -27,38 +27,33 @@ export default () => (
       >
         <div className="container">
           <div className="navbar-brand">
-            <Link
-              to="/"
-              className="navbar-item header-logo"
-              style={{ 'paddingLeft': '50px' }}
-            >
-              <Img fixed={data.contentfulAsset.fixed} />
-            </Link>
+            {!isMobileNav(props) && (
+              <Link
+                to="/"
+                className="navbar-item header-logo"
+                style={{ paddingLeft: '50px' }}
+              >
+                <Img fixed={data.contentfulAsset.fixed} />
+              </Link>
+            )}
+
             <Link
               role="button"
-              className="navbar-burger burger"
+              className={
+                'navbar-burger burger' + (isMobileNav(props) ? ' is-active' : '')
+              }
               aria-label="menu"
               aria-expanded="false"
               data-target="navbarBasicExample"
-              to="mobilenav"
+              to={isMobileNav(props) ? '/' : '/mobilenav'}
             >
               <span aria-hidden="true" />
               <span aria-hidden="true" />
               <span aria-hidden="true" />
-            </Link>
-            <Link
-              role="button"
-              className="navbar-burger burger"
-              aria-label="menu"
-              aria-expanded="false"
-              data-target="navbarBasicExample"
-              to="mobilenav"
-            >
-             EXIT
             </Link>
           </div>
           <div id="navbarBasicExample" className="navbar-menu">
-            <div className="navbar-end" style={{ 'paddingRight': '50px' }}>
+            <div className="navbar-end" style={{ paddingRight: '50px' }}>
               <div className="navbar-item has-dropdown is-hoverable">
                 <HeaderLink category="artprints" label="SHOP" />
                 <div className="navbar-dropdown">
@@ -68,7 +63,12 @@ export default () => (
                 </div>
               </div>
               <HeaderLink category="contact" label="CONTACT" />
-              <a href="#" className="snipcart-checkout navbar-item is-size-7 has-text-black">CART</a>
+              <a
+                href="#"
+                className="snipcart-checkout navbar-item is-size-7 has-text-black"
+              >
+                CART
+              </a>
             </div>
           </div>
         </div>
@@ -76,3 +76,10 @@ export default () => (
     )}
   />
 )
+
+function isMobileNav(props) {
+  return (
+    props.location.pathname === '/mobilenav' ||
+    props.location.pathname === '/mobilenavproductcategories'
+  )
+}

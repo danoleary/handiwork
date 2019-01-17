@@ -2,8 +2,8 @@ import React from 'react'
 import Layout from '../components/layout'
 import Img from 'gatsby-image'
 
-export default ({ pageContext: { title, price, id, image } }) => (
-  <Layout>
+export default ({ pageContext: { title, price, id, image } }, location) => (
+  <Layout location={location}>
     <div className="tile is-ancestor">
       <div className="tile is-parent">
         <article className="tile is-child">

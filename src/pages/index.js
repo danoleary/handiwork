@@ -3,8 +3,8 @@ import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import HomePageLink from '../components/homepagelink'
 
-export default ({ data }) => (
-  <Layout>
+export default ({ data, location }) => (
+  <Layout location={location}>
     <div className="tile is-ancestor">
       <div className="tile is-parent is-7">
         <HomePageLink data={data} category='artprints' />

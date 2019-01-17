@@ -7,7 +7,7 @@ import './layout.css'
 import '../styles/index.scss'
 import { Link } from 'gatsby'
 
-const Layout = ({ children }) => (
+const Layout = ({ children, location }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -54,11 +54,11 @@ const Layout = ({ children }) => (
         >
           <html lang="en" />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header siteTitle={data.site.siteMetadata.title} location={location} />
         <div className="container" style={{ paddingTop: '50px' }}>
           {children}
         </div>
-        <footer className="footer">
+        {isMobileNav(location) && <footer className="footer">
           <div
             className="content has-text-centered"
             style={{ paddingTop: '50px' }}
@@ -67,7 +67,7 @@ const Layout = ({ children }) => (
               <p className="is-size-7 has-text-grey-dark">SHIPPING + RETURNS</p>
             </Link>
           </div>
-        </footer>
+        </footer>}
       </>
     )}
   />
@@ -75,6 +75,11 @@ const Layout = ({ children }) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+}
+
+function isMobileNav(location) {
+  return location.pathname !== '/mobilenav'
+  && location.pathname !== '/mobilenavproductcategories'
 }
 
 export default Layout
