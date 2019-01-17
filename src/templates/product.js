@@ -5,8 +5,11 @@ import Img from 'gatsby-image'
 export default ({ pageContext: { title, price, id, image } }, location) => (
   <Layout location={location}>
     <div className="columns custom-columns">
-      <div className="column is-two-fifths" style={{ paddingTop: '100px' }}>
-        <p className="title has-text-centered is-uppercase has-text-dark-grey">
+      <div className="column is-two-fifths">
+        <p
+          className="title has-text-centered is-uppercase has-text-dark-grey is-hidden-touch"
+          style={{ paddingTop: '100px' }}
+        >
           {title}
         </p>
         <p
@@ -31,6 +34,11 @@ export default ({ pageContext: { title, price, id, image } }, location) => (
       </div>
 
       <div className="column">
+        <p
+          className="title has-text-centered is-uppercase has-text-dark-grey is-hidden-desktop"
+        >
+          {title}
+        </p>
         <Img fluid={image} />
       </div>
     </div>

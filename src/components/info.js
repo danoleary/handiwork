@@ -8,7 +8,7 @@ export default (props) => (
       <div className="column is-half">
         <p
           className="has-text-centered has-text-black is-size-5"
-          style={{ 'paddingTop': '100px' }}
+          style={{ 'paddingTop': '50px' }}
         >
           {props.title}
         </p>
