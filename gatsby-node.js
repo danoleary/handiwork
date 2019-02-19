@@ -5,12 +5,28 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     graphql(`
     {
+      allContentfulOptiongroup {
+        edges {
+         node {
+           id
+           description
+           options {
+             id
+             name
+             price
+           }
+         }
+       }
+     }
       allContentfulProduct {
         edges {
           node {
             id
             title
-            price
+            description
+            options {
+              id
+            }
             category
             image {
               fluid {
@@ -29,7 +45,10 @@ exports.createPages = ({ graphql, actions }) => {
             node {
               title
               id
-              price
+              description
+              options {
+                id
+              }
               category
               image {
                 fluid {
@@ -60,8 +79,10 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             title: node.title,
             id: node.id,
-            price: node.price,
-            image: node.image.fluid
+            optionGroup: result.data.allContentfulOptiongroup.edges
+              .filter(x => x.node.id === node.options.id)[0].node,
+            image: node.image.fluid,
+            description: node.description
           },
         })
       })
