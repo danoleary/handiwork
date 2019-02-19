@@ -7,6 +7,8 @@ import './layout.css'
 import '../styles/index.scss'
 import { Link } from 'gatsby'
 
+const snipCartKey = process.env.SNIPCART_KEY
+
 const Layout = ({ children, location }) => (
   <StaticQuery
     query={graphql`
@@ -36,7 +38,7 @@ const Layout = ({ children, location }) => (
               type: 'text/javascript',
               src: 'https://cdn.snipcart.com/scripts/2.0/snipcart.js',
               id: 'snipcart',
-              'data-api-key': `${process.env.SNIPCART_KEY}`,
+              'data-api-key': `${snipCartKey}`,
             },
           ]}
           link={[
