@@ -67,7 +67,6 @@ const Layout = ({ children, location }) => (
           >
             <Link to="shipping">
               <p className="is-size-7 has-text-grey-dark">SHIPPING + RETURNS</p>
-              <p>{snipCartKey}</p>
             </Link>
           </div>
         </footer>}
