@@ -67,7 +67,7 @@ const Layout = ({ children, location }) => (
           >
             <Link to="shipping">
               <p className="is-size-7 has-text-grey-dark">SHIPPING + RETURNS</p>
-              <p>{snipCartKey}</p>
+              <p>{process.env.SNIPCART_KEY}</p>
             </Link>
           </div>
         </footer>}
