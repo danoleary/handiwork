@@ -7,7 +7,7 @@ import './layout.css'
 import '../styles/index.scss'
 import { Link } from 'gatsby'
 
-const snipCartKey = process.env.SNIPCART_KEY
+const snipCartKey = process.env.GATSBY_SNIPCART_KEY
 
 const Layout = ({ children, location }) => (
   <StaticQuery
@@ -67,9 +67,7 @@ const Layout = ({ children, location }) => (
           >
             <Link to="shipping">
               <p className="is-size-7 has-text-grey-dark">SHIPPING + RETURNS</p>
-              <p>{process.env.SNIPCART_KEY}</p>
-              <p>{process.env.GATSBY_SNIPCART_KEY}</p>
-              <p>{process.env.$ANOTHER_SNIPCART_KEY}</p>
+              <p>{snipCartKey}</p>
             </Link>
           </div>
         </footer>}
